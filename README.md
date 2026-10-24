@@ -12,6 +12,10 @@
   <img src="assets/about.svg" width="100%" alt="About — I build Python desktop apps with practical features and clean interfaces. Focus: Windows, music tools and a community VALORANT companion." />
 </p>
 
+<p align="center">
+  <img src="assets/process.svg" width="100%" alt="Idea → Build → Refine — decorative creative process strip" />
+</p>
+
 ### Toolkit
 
 <p>
@@ -26,6 +30,10 @@
 </p>
 
 <sub>vRY is based on [VALORANT-rank-yoinker](https://github.com/zayKenyon/VALORANT-rank-yoinker). Not affiliated with Riot Games.</sub>
+
+<p align="center">
+  <a href="https://rinonrc.github.io/RinoNRC/"><img src="assets/game-card.svg" width="100%" alt="Play Neon Breakout — a small neon arcade game. Opens a separate page; mouse, touch and keyboard controls." /></a>
+</p>
 
 <p align="center">
   <img src="assets/light-wave.svg" width="100%" alt="Decorative turquoise light wave" />

@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d1117">
+<meta name="description" content="Neon Breakout — a small, offline-friendly arcade game by RinoNRC.">
+<title>Neon Breakout · RinoNRC</title>
+<style>
+:root{color-scheme:dark;--bg:#0d1117;--deep:#010409;--panel:#161b22;--line:#30363d;--text:#e6edf3;--muted:#919eab;--accent:#2dd4bf}
+*{box-sizing:border-box}body{margin:0;min-height:100svh;background:var(--bg);color:var(--text);font:15px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}button:focus-visible,a:focus-visible,.court:focus-visible{outline:3px solid var(--accent);outline-offset:5px}.page{width:min(1050px,100%);margin:auto;padding:38px 28px 22px}.topline{display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}.brand{color:var(--text);letter-spacing:.06em}.brand span{color:var(--accent)}.badge{border:1px solid var(--line);border-radius:100px;padding:4px 10px;font-size:10px;letter-spacing:.08em}.heading{margin:30px 0 25px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}h1{font-size:clamp(30px,5vw,46px);letter-spacing:-.055em;line-height:1.15;margin:0 0 9px}h1 span{color:var(--accent)}.subtitle{margin:0;color:var(--muted);font-size:14px}.edition{color:var(--muted);font:11px ui-monospace,SFMono-Regular,Consolas,monospace;white-space:nowrap;padding-bottom:6px}.game{border:1px solid var(--line);border-radius:14px;background:var(--deep);overflow:hidden;box-shadow:0 20px 70px #0003}.scoreboard{display:flex;gap:34px;align-items:center;padding:16px 23px;border-bottom:1px solid #21262d;background:#0d1117}.stat{display:flex;flex-direction:column;gap:1px}.stat dt{font:10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}.stat dd{margin:0;font:600 20px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;font-variant-numeric:tabular-nums}.stat:first-child dd{color:var(--accent)}.scoreboard dl{display:contents}.state-pill{margin-left:auto;font:11px ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--accent);display:flex;align-items:center;gap:7px}.state-pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}.court{position:relative;aspect-ratio:900/520;touch-action:none;outline:none}canvas{display:block;width:100%;height:100%}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none;background:#01040970}.overlay[hidden]{display:none}.overlay-card{max-width:88%;padding:24px 30px;border:1px solid #2dd4bf40;border-radius:12px;background:#0d1117ed;box-shadow:0 12px 60px #0008}.overlay .eyebrow{color:var(--accent);font:10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.2em;margin:0 0 9px}.overlay h2{font-size:clamp(22px,4vw,34px);line-height:1.2;letter-spacing:-.04em;margin:0 0 10px}.overlay p{margin:0;color:#a7b4c1;font-size:13px}.overlay .hint{margin-top:15px;color:var(--accent);font:11px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}.toolbar{padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid #21262d;background:#0d1117}.buttons{display:flex;gap:9px}button{cursor:pointer;min-height:44px;border:1px solid var(--line);border-radius:7px;padding:8px 16px;background:#161b22;color:var(--text);font-size:13px;font-weight:600}button:hover:not(:disabled){background:#21262d;border-color:#56616c}button.primary{background:var(--accent);border-color:var(--accent);color:#052e2b}button.primary:hover:not(:disabled){background:#5eead4;border-color:#5eead4}button:disabled{opacity:.38;cursor:default}.toolbar-note{color:var(--muted);font:11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}.help{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:24px 0}.help h2{font:11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;color:var(--text);margin:0 0 8px}.help p{font-size:12px;color:var(--muted);margin:0;line-height:1.9}kbd{display:inline-block;background:#161b22;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;font:11px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;color:#c9d1d9}.touch-controls{display:none;gap:10px;padding:0 22px 16px;background:#0d1117}.touch-controls button{flex:1;touch-action:none;user-select:none;min-height:48px;color:var(--accent);font-size:20px}footer{border-top:1px solid #21262d;display:flex;justify-content:space-between;gap:15px;padding-top:18px;font:11px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--muted)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.fallback{padding:32px;color:var(--text)}
+@media(pointer:coarse){.touch-controls{display:flex}.toolbar-note{display:none}}
+@media(max-width:600px){.page{padding:22px 12px}.heading{margin:24px 0 20px}.edition{display:none}.scoreboard{padding:12px 15px;gap:24px}.stat dd{font-size:18px}.state-pill{font-size:10px}.toolbar{padding:12px;flex-wrap:wrap}.toolbar-note{display:none}.buttons{width:100%}.buttons button{flex:1;padding:8px 10px}.help{gap:18px;margin:20px 3px}.overlay-card{padding:16px 20px}.overlay p{font-size:11px}.overlay .hint{margin-top:10px;font-size:10px}.overlay .eyebrow{margin-bottom:6px}footer{font-size:10px}.badge{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <div class="topline"><div class="brand"><span>◈</span> RinoNRC <span>/</span> arcade</div><span class="badge">OFFLINE READY</span></div>
+    <div class="heading"><div><h1>Neon <span>Breakout.</span></h1><p class="subtitle">A little focus. A little chaos. One more bounce.</p></div><div class="edition">01 / THE CLASSICS</div></div>
+  </header>
+  <section class="game" aria-label="Neon Breakout game">
+    <div class="scoreboard">
+      <dl><div class="stat"><dt>Score</dt><dd id="score">0000</dd></div><div class="stat"><dt>Best</dt><dd id="best">0000</dd></div><div class="stat"><dt>Lives</dt><dd id="lives">3</dd></div></dl>
+      <span class="state-pill" id="state">READY</span>
+    </div>
+    <div class="court" id="court" tabindex="0" role="group" aria-label="Playfield. Use Left and Right arrows or A and D to move. Space starts or pauses." aria-describedby="instructions">
+      <canvas id="canvas" width="900" height="520" aria-label="Breakout playfield: move the paddle to bounce the ball and clear all 48 bricks."><p class="fallback">Your browser does not support canvas. This game requires a modern browser with JavaScript and canvas enabled.</p></canvas>
+      <div class="overlay" id="overlay"><div class="overlay-card"><p class="eyebrow" id="overlay-label">SMALL GAME. BIG BOUNCES.</p><h2 id="overlay-title">Find your angle.</h2><p id="overlay-description">Clear the bricks. Keep the ball alive.</p><p class="hint" id="overlay-hint">Press Space or select Start</p></div></div>
+    </div>
+    <div class="toolbar"><div class="buttons"><button class="primary" id="start" type="button">Start</button><button id="pause" type="button" disabled>Pause</button><button id="restart" type="button">Restart</button></div><span class="toolbar-note">48 bricks · 3 lives · your rhythm</span></div>
+    <div class="touch-controls" aria-label="Touch paddle controls"><button id="left" type="button" aria-label="Move paddle left">←</button><button id="right" type="button" aria-label="Move paddle right">→</button></div>
+  </section>
+  <div class="help" id="instructions"><section><h2>MAKE YOUR MOVE</h2><p><kbd>←</kbd> <kbd>→</kbd> or <kbd>A</kbd> <kbd>D</kbd> to move · <kbd>Space</kbd> to start / pause.<br>Or move your mouse / drag on the playfield. Touch arrows work too.</p></section><section><h2>PLAY THE ANGLES</h2><p>The paddle's edges send the ball wide; the center keeps it straight.<br>Lose a ball? Take a breath, then launch again. Tab away to pause.</p></section></div>
+  <p id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true">Ready. Select Start to play.</p>
+  <noscript><p class="fallback">Enable JavaScript to play Neon Breakout. Everything runs locally in your browser; no downloads or network access are needed.</p></noscript>
+  <footer><span>Built for a small break. Not a productivity metric.</span><a href="https://github.com/RinoNRC" rel="noopener noreferrer">RinoNRC ↗</a></footer>
+</main>
+<script>
+'use strict';
+(() => {
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  const ui = Object.fromEntries(['score', 'best', 'lives', 'state', 'overlay', 'overlay-label', 'overlay-title', 'overlay-description', 'overlay-hint', 'start', 'pause', 'restart', 'announcement', 'court'].map(id => [id, document.getElementById(id)]));
+  if (!ctx) {
+    ui['overlay-title'].textContent = 'Canvas unavailable';
+    ui['overlay-description'].textContent = 'Please open this game in a browser with canvas support.';
+    ui['overlay-hint'].textContent = '';
+    for (const id of ['start', 'pause', 'restart']) ui[id].disabled = true;
+    return;
+  }
+  const W = 900, H = 520, STEP = 1 / 240;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const colors = ['#0891b2', '#06b6d4', '#22d3ee', '#2dd4bf', '#5eead4', '#99f6e4'];
+  const paddle = { x: W / 2, y: 469, w: 116, h: 12 };
+  const ball = { x: W / 2, y: 458, r: 7, vx: 0, vy: 0 };
+  let state = 'ready', resumeState = 'playing', score = 0, best = 0, lives = 3;
+  let bricks = [], particles = [], trail = [], keys = new Set(), touchKeys = new Set();
+  let accumulator = 0, previous = 0, paddleTarget = null;
+  try { best = Math.max(0, Number(localStorage.getItem('rinonrc-neon-breakout-best')) || 0); } catch (_) {}
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const format = value => String(value).padStart(4, '0');
+  function announce(message) { ui.announcement.textContent = message; }
+  function updateStats() {
+    ui.score.textContent = format(score);
+    ui.best.textContent = format(best);
+    ui.lives.textContent = String(lives);
+  }
+  function showOverlay(label, title, description, hint) {
+    ui['overlay-label'].textContent = label;
+    ui['overlay-title'].textContent = title;
+    ui['overlay-description'].textContent = description;
+    ui['overlay-hint'].textContent = hint;
+  }
+  function setState(next) {
+    state = next;
+    accumulator = 0;
+    ui.state.textContent = ({ ready: 'READY', playing: 'IN PLAY', paused: 'PAUSED', won: 'CLEARED', over: 'GAME OVER' })[state];
+    ui.overlay.hidden = state === 'playing';
+    ui.start.disabled = state === 'playing';
+    ui.start.textContent = state === 'paused' ? 'Resume' : state === 'won' || state === 'over' ? 'Play again' : 'Start';
+    ui.pause.disabled = state !== 'playing';
+    if (state === 'paused') showOverlay('TAKE YOUR TIME', 'On pause.', 'Your next bounce can wait.', 'Press Space or select Resume');
+    if (state === 'won') showOverlay('ALL CLEAR', 'Beautifully played.', `All 48 bricks cleared. Final score: ${score}.`, 'Select Play again for a fresh board');
+    if (state === 'over') showOverlay('THAT WAS A GOOD RUN', 'One more round?', `Final score: ${score}. A fresh board is waiting.`, 'Press Space or select Play again');
+  }
+  function dockBall() {
+    ball.x = paddle.x;
+    ball.y = paddle.y - ball.r - 2;
+    ball.vx = 0;
+    ball.vy = 0;
+    trail = [];
+  }
+  function reset() {
+    keys.clear(); touchKeys.clear(); paddleTarget = null;
+    score = 0; lives = 3; particles = []; trail = [];
+    paddle.x = W / 2;
+    bricks = [];
+    for (let row = 0; row < 6; row++) {
+      for (let col = 0; col < 8; col++) {
+        bricks.push({ x: 46 + col * 102, y: 54 + row * 29, w: 94, h: 20, color: colors[row], alive: true, points: (6 - row) * 10 });
+      }
+    }
+    dockBall();
+    showOverlay('SMALL GAME. BIG BOUNCES.', 'Find your angle.', 'Clear the bricks. Keep the ball alive.', 'Press Space or select Start');
+    setState('ready');
+    updateStats();
+    announce('New game ready. Three lives. Select Start to launch.');
+  }
+  function start() {
+    if (document.hidden || state === 'playing') return;
+    if (state === 'over' || state === 'won') reset();
+    if (state === 'paused') {
+      setState(resumeState);
+      announce('Game resumed.');
+      return;
+    }
+    if (state === 'ready') {
+      ball.vx = 140;
+      ball.vy = -Math.sqrt(350 * 350 - 140 * 140);
+      setState('playing');
+      announce('Ball launched.');
+    }
+  }
+  function pause() {
+    keys.clear(); touchKeys.clear(); paddleTarget = null;
+    if (state !== 'playing') return;
+    resumeState = state;
+    setState('paused');
+    announce('Game paused. Select Resume when ready.');
+  }
+  function recordScore(points) {
+    score += points;
+    if (score > best) {
+      best = score;
+      try { localStorage.setItem('rinonrc-neon-breakout-best', String(best)); } catch (_) {}
+    }
+    updateStats();
+  }
+  function burst(brick) {
+    if (motion.matches) return;
+    for (let i = 0; i < 8; i++) particles.push({ x: brick.x + brick.w / 2, y: brick.y + brick.h / 2, vx: (Math.random() - .5) * 190, vy: (Math.random() - .5) * 190, life: .38, color: brick.color });
+  }
+  // At 240 Hz, even the fastest ball moves less than its radius per step.
+  // Circle/rectangle normals separate overlaps before the next collision check.
+  function brickCollision(brick) {
+    const nearX = clamp(ball.x, brick.x, brick.x + brick.w);
+    const nearY = clamp(ball.y, brick.y, brick.y + brick.h);
+    let nx = ball.x - nearX, ny = ball.y - nearY;
+    const distance = Math.hypot(nx, ny);
+    if (distance >= ball.r) return false;
+    let penetration = ball.r - distance;
+    if (distance > .0001) { nx /= distance; ny /= distance; }
+    else {
+      const faces = [
+        { d: ball.x - brick.x, x: -1, y: 0 },
+        { d: brick.x + brick.w - ball.x, x: 1, y: 0 },
+        { d: ball.y - brick.y, x: 0, y: -1 },
+        { d: brick.y + brick.h - ball.y, x: 0, y: 1 }
+      ].sort((a, b) => a.d - b.d);
+      nx = faces[0].x; ny = faces[0].y; penetration += faces[0].d;
+    }
+    ball.x += nx * (penetration + .02);
+    ball.y += ny * (penetration + .02);
+    const dot = ball.vx * nx + ball.vy * ny;
+    if (dot < 0) { ball.vx -= 2 * dot * nx; ball.vy -= 2 * dot * ny; }
+    brick.alive = false;
+    recordScore(brick.points);
+    burst(brick);
+    const speed = Math.hypot(ball.vx, ball.vy);
+    const nextSpeed = Math.min(540, speed + 3);
+    ball.vx *= nextSpeed / speed;
+    ball.vy *= nextSpeed / speed;
+    // Keep glancing corner hits from becoming near-horizontal stalemates.
+    if (Math.abs(ball.vy) < nextSpeed * .25) {
+      ball.vy = (ball.vy < 0 ? -1 : 1) * nextSpeed * .25;
+      ball.vx = (ball.vx < 0 ? -1 : 1) * Math.sqrt(nextSpeed * nextSpeed - ball.vy * ball.vy);
+    }
+    return true;
+  }
+  function update(dt) {
+    const left = keys.has('arrowleft') || keys.has('a') || touchKeys.has('left');
+    const right = keys.has('arrowright') || keys.has('d') || touchKeys.has('right');
+    if (left || right) {
+      paddleTarget = null;
+      paddle.x += (Number(right) - Number(left)) * 660 * dt;
+    } else if (paddleTarget !== null) {
+      paddle.x += clamp(paddleTarget - paddle.x, -1050 * dt, 1050 * dt);
+    }
+    paddle.x = clamp(paddle.x, paddle.w / 2 + 12, W - paddle.w / 2 - 12);
+    if (state === 'ready') { dockBall(); return; }
+    if (state !== 'playing') return;
+    const oldY = ball.y;
+    ball.x += ball.vx * dt; ball.y += ball.vy * dt;
+    if (ball.x < ball.r) { ball.x = ball.r; ball.vx = Math.abs(ball.vx); }
+    if (ball.x > W - ball.r) { ball.x = W - ball.r; ball.vx = -Math.abs(ball.vx); }
+    if (ball.y < ball.r) { ball.y = ball.r; ball.vy = Math.abs(ball.vy); }
+    if (ball.vy > 0 && oldY + ball.r <= paddle.y && ball.y + ball.r >= paddle.y && ball.x + ball.r >= paddle.x - paddle.w / 2 && ball.x - ball.r <= paddle.x + paddle.w / 2) {
+      const offset = clamp((ball.x - paddle.x) / (paddle.w / 2), -1, 1);
+      const angle = offset * Math.PI / 3;
+      const speed = Math.hypot(ball.vx, ball.vy);
+      ball.vx = speed * Math.sin(angle);
+      ball.vy = -speed * Math.cos(angle);
+      ball.y = paddle.y - ball.r - .02;
+    }
+    for (const brick of bricks) {
+      if (brick.alive && brickCollision(brick)) break;
+    }
+    if (bricks.every(brick => !brick.alive)) {
+      setState('won'); announce(`Board cleared! Final score ${score}. Select Play again to restart.`); return;
+    }
+    if (ball.y - ball.r > H) {
+      lives--; updateStats();
+      if (!lives) { setState('over'); announce(`Game over. Final score ${score}. Select Play again to restart.`); }
+      else {
+        dockBall();
+        showOverlay('A FRESH LAUNCH', 'You have this.', `${lives} ${lives === 1 ? 'life' : 'lives'} remaining. The board is still yours.`, 'Press Space or select Start to launch');
+        setState('ready');
+        announce(`Ball lost. ${lives} ${lives === 1 ? 'life' : 'lives'} remaining. Select Start to launch again.`);
+      }
+    }
+  }
+  function draw(dt) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#010409'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#132027';
+    for (let x = 22; x < W; x += 28) for (let y = 20; y < H; y += 28) ctx.fillRect(x, y, 1, 1);
+    for (const brick of bricks) {
+      if (!brick.alive) continue;
+      ctx.fillStyle = brick.color; ctx.globalAlpha = .84; ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
+      ctx.globalAlpha = .4; ctx.fillStyle = '#ecfeff'; ctx.fillRect(brick.x, brick.y, brick.w, 2);
+      ctx.globalAlpha = 1;
+    }
+    if (!motion.matches) {
+      if (state === 'playing') {
+        trail.push({ x: ball.x, y: ball.y });
+        if (trail.length > 10) trail.shift();
+      }
+      trail.forEach((point, i) => {
+        ctx.globalAlpha = i / Math.max(1, trail.length) * .2;
+        ctx.fillStyle = '#5eead4'; ctx.beginPath(); ctx.arc(point.x, point.y, ball.r * i / trail.length, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+      if (state !== 'paused') {
+        particles = particles.filter(p => p.life > 0);
+        for (const p of particles) {
+          p.life -= dt; p.x += p.vx * dt; p.y += p.vy * dt;
+          ctx.globalAlpha = Math.max(0, p.life / .38); ctx.fillStyle = p.color; ctx.fillRect(p.x, p.y, 3, 3);
+        }
+      }
+      ctx.globalAlpha = 1;
+    } else { trail = []; particles = []; }
+    ctx.fillStyle = '#2dd4bf'; ctx.shadowColor = '#2dd4bf'; ctx.shadowBlur = motion.matches ? 0 : 15;
+    ctx.fillRect(paddle.x - paddle.w / 2, paddle.y, paddle.w, paddle.h);
+    ctx.shadowBlur = 0; ctx.fillStyle = '#99f6e4'; ctx.fillRect(paddle.x - 12, paddle.y + 3, 24, 2);
+    ctx.fillStyle = '#ecfeff'; ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#1b2a30'; ctx.setLineDash([4, 8]); ctx.beginPath(); ctx.moveTo(12, 504); ctx.lineTo(888, 504); ctx.stroke(); ctx.setLineDash([]);
+  }
+  function frame(time) {
+    const dt = previous ? Math.min((time - previous) / 1000, .05) : 0;
+    previous = time;
+    if (state === 'playing' || state === 'ready') {
+      accumulator += dt;
+      while (accumulator >= STEP) {
+        update(STEP);
+        accumulator = Math.max(0, accumulator - STEP);
+        if (state !== 'playing' && state !== 'ready') break;
+      }
+    }
+    draw(dt);
+    requestAnimationFrame(frame);
+  }
+  ui.start.addEventListener('click', start);
+  ui.pause.addEventListener('click', pause);
+  ui.restart.addEventListener('click', reset);
+  window.addEventListener('keydown', event => {
+    if (event.altKey || event.ctrlKey || event.metaKey || /^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName) || event.target.isContentEditable) return;
+    const key = event.key.toLowerCase();
+    // Native button activation takes precedence over the global Space shortcut.
+    if (event.code === 'Space' && event.target.closest('button, a')) return;
+    if (['arrowleft', 'arrowright', 'a', 'd'].includes(key)) { event.preventDefault(); keys.add(key); }
+    if (event.code === 'Space') {
+      event.preventDefault();
+      if (!event.repeat) { if (state === 'playing') pause(); else start(); }
+    }
+  });
+  window.addEventListener('keyup', event => keys.delete(event.key.toLowerCase()));
+  function pointerMove(event) {
+    if (event.pointerType !== 'mouse' && !event.buttons) return;
+    if (state !== 'ready' && state !== 'playing') return;
+    const rect = canvas.getBoundingClientRect();
+    paddleTarget = clamp((event.clientX - rect.left) / rect.width * W, 0, W);
+  }
+  ui.court.addEventListener('pointermove', pointerMove);
+  ui.court.addEventListener('pointerdown', event => {
+    ui.court.focus({ preventScroll: true });
+    ui.court.setPointerCapture(event.pointerId);
+    pointerMove(event);
+  });
+  for (const direction of ['left', 'right']) {
+    const button = document.getElementById(direction);
+    button.addEventListener('pointerdown', event => {
+      event.preventDefault(); button.setPointerCapture(event.pointerId); touchKeys.add(direction);
+    });
+    for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) button.addEventListener(type, () => touchKeys.delete(direction));
+    button.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.code === 'Space') { event.preventDefault(); touchKeys.add(direction); }
+    });
+    button.addEventListener('keyup', () => touchKeys.delete(direction));
+    button.addEventListener('blur', () => touchKeys.delete(direction));
+  }
+  window.addEventListener('blur', pause);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); previous = 0; });
+  reset();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

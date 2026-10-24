@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="94" viewBox="0 0 1200 94" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">Idea. Build. Refine.</title>
+<desc id="desc">A decorative creative process strip, with a light pulse connecting three stages.</desc>
+<defs>
+  <linearGradient id="line"><stop stop-color="#2dd4bf" stop-opacity="0"/><stop offset=".5" stop-color="#2dd4bf" stop-opacity=".4"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient>
+  <style>
+    .mono{font-family:ui-monospace,Consolas,'Liberation Mono',monospace}
+    .pulse{stroke-dasharray:48 552;animation:flow 9s linear infinite}
+    .second{animation-delay:-4.5s}
+    @keyframes flow{from{stroke-dashoffset:60;opacity:0}15%,85%{opacity:.8}to{stroke-dashoffset:-540;opacity:0}}
+    @media(prefers-reduced-motion:reduce){.pulse{animation:none;opacity:.25}}
+  </style>
+</defs>
+<path d="M216 47H486M690 47H968" stroke="url(#line)"/>
+<path class="pulse" d="M216 47H486" stroke="#65e8d3" stroke-width="1.4"/>
+<path class="pulse second" d="M690 47H968" stroke="#65e8d3" stroke-width="1.4"/>
+<g fill="#0d1117" stroke="#26343e"><circle cx="60" cy="47" r="17"/><circle cx="540" cy="47" r="17"/><circle cx="1020" cy="47" r="17"/></g>
+<g class="mono" fill="#2dd4bf" font-size="11" text-anchor="middle"><text x="60" y="51">01</text><text x="540" y="51">02</text><text x="1020" y="51">03</text></g>
+<g class="mono" fill="#a7b5c0" font-size="16" letter-spacing="2"><text x="92" y="53">IDEA</text><text x="572" y="53">BUILD</text><text x="1052" y="53">REFINE</text></g>
+</svg>

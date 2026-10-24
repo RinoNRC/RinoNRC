@@ -14,10 +14,19 @@
     <style>
       .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
       .mono { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+      .accent { animation: breathe 7s ease-in-out infinite; }
+      .focus { animation: focus 12s ease-in-out infinite; }
+      .second { animation-delay: -8s; }
+      .third { animation-delay: -4s; }
+      .divider { stroke-dasharray: 40 156; animation: scan 7s linear infinite; }
+      @keyframes breathe { 0%,100% { opacity: .4; } 50% { opacity: 1; } }
+      @keyframes focus { 0%,25% { opacity: .85; } 33%,92% { opacity: .08; } 100% { opacity: .85; } }
+      @keyframes scan { to { stroke-dashoffset: -196; } }
+      @media(prefers-reduced-motion:reduce) { .accent,.focus,.divider { animation: none; } .focus { opacity: .3; } .divider { display: none; } }
     </style>
   </defs>
   <rect x=".5" y=".5" width="1199" height="271" rx="18" fill="url(#surface)" stroke="#26343e"/>
-  <path d="M1 28V244" stroke="url(#accent)" stroke-width="2"/>
+  <path class="accent" d="M1 28V244" stroke="url(#accent)" stroke-width="2"/>
   <text x="36" y="44" class="mono" font-size="14" letter-spacing="2.2" fill="#82969f">ABOUT / THE APPROACH</text>
   <text x="33" y="108" class="sans" font-size="47" font-weight="650" letter-spacing="-1.5" fill="#e6edf3">Useful by design<tspan fill="#2dd4bf">.</tspan></text>
   <text x="36" y="153" class="sans" font-size="22" fill="#b0bdc8">I build desktop apps that turn everyday tasks</text>
@@ -25,6 +34,12 @@
   <circle cx="40" cy="229" r="3.5" fill="#2dd4bf"/>
   <text x="54" y="235" class="mono" font-size="15" fill="#82969f">EXPLORING / music tools + game companions</text>
   <path d="M754 38V234" stroke="#26343e"/>
+  <path class="divider" d="M754 38V234" stroke="#2dd4bf" stroke-opacity=".65"/>
+  <g fill="#2dd4bf">
+    <rect class="focus" x="772" y="52" width="2" height="38" rx="1"/>
+    <rect class="focus second" x="772" y="118" width="2" height="38" rx="1"/>
+    <rect class="focus third" x="772" y="184" width="2" height="38" rx="1"/>
+  </g>
   <g class="mono" font-size="13" letter-spacing="1.3" fill="#6f8992">
     <text x="790" y="61">01 / CORE</text>
     <text x="790" y="127">02 / PLATFORM</text>

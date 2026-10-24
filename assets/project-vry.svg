@@ -4,19 +4,35 @@
 <defs>
   <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(550 25) rotate(140) scale(380 280)" gradientUnits="userSpaceOnUse"><stop stop-color="#2dd4bf" stop-opacity=".09"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></radialGradient>
   <linearGradient id="edge" x1="32" y1="0" x2="568" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#2dd4bf" stop-opacity=".6"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient>
-  <style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}.mono{font-family:ui-monospace,Consolas,'Liberation Mono',monospace}</style>
+  <clipPath id="card"><rect x="1" y="1" width="598" height="308" rx="18"/></clipPath>
+  <linearGradient id="sheen"><stop stop-color="#2dd4bf" stop-opacity="0"/><stop offset=".5" stop-color="#8ffff0" stop-opacity=".07"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient>
+  <style>
+    .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}.mono{font-family:ui-monospace,Consolas,'Liberation Mono',monospace}
+    .sheen{animation:sweep 12s ease-in-out -5s infinite;transform:translateX(-260px)}
+    .border{stroke-dasharray:140 1680;animation:trace 16s linear -8s infinite}
+    .ambient{animation:breathe 8s ease-in-out -4s infinite}
+    .signal{transform-box:fill-box;transform-origin:center;animation:signal 3.6s ease-in-out infinite}
+    @keyframes sweep{0%,16%{transform:translateX(-260px)}64%,100%{transform:translateX(860px)}}
+    @keyframes trace{to{stroke-dashoffset:-1820}}
+    @keyframes breathe{0%,100%{opacity:.55}50%{opacity:1}}
+    @keyframes signal{0%,100%{opacity:.3;transform:scale(.85)}50%{opacity:1;transform:scale(1.1)}}
+    @media(prefers-reduced-motion:reduce){.sheen{display:none}.border,.ambient,.signal{animation:none}.border{opacity:.25}}
+  </style>
 </defs>
 <rect x=".5" y=".5" width="599" height="309" rx="18" fill="#0d1117" stroke="#26343e"/>
-<rect x="1" y="1" width="598" height="308" rx="18" fill="url(#glow)"/>
+<rect class="ambient" x="1" y="1" width="598" height="308" rx="18" fill="url(#glow)"/>
+<g clip-path="url(#card)"><path class="sheen" d="M0 0H170L60 310H-110Z" fill="url(#sheen)"/></g>
+<rect class="border" x="1" y="1" width="598" height="308" rx="18" stroke="#2dd4bf" stroke-opacity=".5"/>
 <path d="M32 1H568" stroke="url(#edge)"/>
 <text x="32" y="45" class="mono" font-size="12" letter-spacing="2" fill="#7f969e">02 / GAME COMPANION</text>
 <path d="M550 45L565 30M551 30H565V44" stroke="#2dd4bf" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="30" y="110" class="sans" font-size="40" font-weight="650" letter-spacing="-1.2" fill="#e6edf3">vRY<tspan fill="#2dd4bf">.</tspan></text>
 <text x="32" y="155" class="sans" font-size="19" fill="#9baab7">More context. Every match.</text>
 <text x="32" y="185" class="sans" font-size="17" fill="#7e8c99">Live ranks, match stats &amp; local history.</text>
-<g stroke="#2dd4bf" stroke-opacity=".23" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<g stroke="#2dd4bf" stroke-opacity=".45" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
 <path d="M468 86H540V136H468ZM468 122H540M482 109L494 101L506 112L526 93"/>
-<circle cx="526" cy="93" r="3" fill="#2dd4bf" stroke="none"/>
+<circle class="signal" cx="526" cy="93" r="8" fill="none" stroke="#2dd4bf"/>
+<circle class="signal" cx="526" cy="93" r="3" fill="#2dd4bf" stroke="none"/>
 </g>
 <path d="M32 225H568" stroke="#24303a"/>
 <circle cx="36" cy="263" r="3" fill="#2dd4bf"/>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">Neon Breakout — play a round</title>
+<desc id="desc">Open a playable neon arcade game in a separate page. Move with a mouse, touch, or arrow keys. The miniature animation here is only decorative.</desc>
+<defs>
+  <radialGradient id="ambient" cx="0" cy="0" r="1" gradientTransform="translate(1020 120) scale(350 240)" gradientUnits="userSpaceOnUse"><stop stop-color="#2dd4bf" stop-opacity=".1"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></radialGradient>
+  <clipPath id="card"><rect x="1" y="1" width="1198" height="238" rx="18"/></clipPath>
+  <style>
+    .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}.mono{font-family:ui-monospace,Consolas,'Liberation Mono',monospace}
+    .ball{animation:bounce 6s linear infinite}.paddle{animation:follow 6s ease-in-out infinite}.brick{animation:hit 6s linear infinite}
+    @keyframes bounce{0%,100%{transform:translate(860px,160px)}25%{transform:translate(994px,88px)}50%{transform:translate(1090px,160px)}75%{transform:translate(924px,88px)}}
+    @keyframes follow{0%,100%{transform:translateX(0)}50%{transform:translateX(230px)}}
+    @keyframes hit{0%,23%{opacity:1}26%,65%{opacity:.12}78%,100%{opacity:1}}
+    @media(prefers-reduced-motion:reduce){.ball,.paddle,.brick{animation:none}.ball{transform:translate(995px,132px)}}
+  </style>
+</defs>
+<rect x=".5" y=".5" width="1199" height="239" rx="18" fill="#0d1117" stroke="#26343e"/>
+<rect x="1" y="1" width="1198" height="238" rx="18" fill="url(#ambient)"/>
+<text x="36" y="44" class="mono" font-size="13" letter-spacing="2" fill="#82969f">TAKE A BREAK / MINI ARCADE</text>
+<text x="33" y="102" class="sans" font-size="40" font-weight="650" letter-spacing="-1" fill="#e6edf3">Neon Breakout<tspan fill="#2dd4bf">.</tspan></text>
+<text x="36" y="140" class="sans" font-size="20" fill="#9baab7">Clear the blocks. Find your rhythm.</text>
+<g transform="translate(36 169)">
+  <rect width="175" height="38" rx="8" fill="#2dd4bf" fill-opacity=".1" stroke="#2dd4bf" stroke-opacity=".45"/>
+  <path d="M17 12L28 19L17 26Z" fill="#2dd4bf"/>
+  <text x="42" y="25" class="mono" font-size="13" letter-spacing="1" fill="#75efdc">PLAY A ROUND</text>
+</g>
+<text x="234" y="194" class="mono" font-size="13" fill="#73858e">MOUSE / TOUCH / ARROWS</text>
+<path d="M724 36V204" stroke="#26343e"/>
+<g clip-path="url(#card)">
+  <g fill="#2dd4bf">
+    <g opacity=".22"><rect x="808" y="48" width="61" height="13" rx="3"/><rect x="877" y="48" width="61" height="13" rx="3"/><rect x="946" y="48" width="61" height="13" rx="3"/><rect x="1015" y="48" width="61" height="13" rx="3"/><rect x="1084" y="48" width="61" height="13" rx="3"/></g>
+    <g opacity=".45"><rect x="808" y="69" width="61" height="13" rx="3"/><rect x="877" y="69" width="61" height="13" rx="3"/><rect class="brick" x="946" y="69" width="61" height="13" rx="3"/><rect x="1015" y="69" width="61" height="13" rx="3"/><rect x="1084" y="69" width="61" height="13" rx="3"/></g>
+  </g>
+  <g class="ball"><circle r="10" fill="#2dd4bf" opacity=".12"/><circle r="4" fill="#b5fff0"/></g>
+  <g class="paddle"><rect x="821" y="174" width="78" height="5" rx="2.5" fill="#2dd4bf"/></g>
+</g>
+<text x="976" y="211" text-anchor="middle" class="mono" font-size="10" letter-spacing="1.5" fill="#526c76">A SMALL DETOUR. JUST FOR FUN.</text>
+</svg>
