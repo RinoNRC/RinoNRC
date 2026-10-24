@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="130" viewBox="0 0 1200 130" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">Light wave</title>
+<desc id="desc">A quiet turquoise light pulse traveling along three flowing lines. Decorative animation.</desc>
+<defs>
+  <linearGradient id="fade" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity="0"/><stop offset=".15" stop-color="white"/><stop offset=".85" stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+  <mask id="edges"><rect width="1200" height="130" fill="url(#fade)"/></mask>
+  <filter id="glow" x="-30%" y="-150%" width="160%" height="400%"><feGaussianBlur stdDeviation="3"/></filter>
+  <path id="a" d="M0 67C140 67 165 29 300 44S470 104 600 72S790 22 910 53S1080 91 1200 61"/>
+  <path id="b" d="M0 67C150 67 195 91 320 74S470 28 610 54S800 100 930 76S1090 46 1200 61"/>
+  <path id="c" d="M0 67C155 67 210 52 350 61S515 83 650 63S830 45 970 61S1110 73 1200 61"/>
+  <style>
+    .pulse{stroke-dasharray:85 1515;stroke-dashoffset:100;animation:travel 10s linear infinite}
+    .second{animation-delay:-4s;animation-duration:13s;stroke-dasharray:55 1545}
+    @keyframes travel{to{stroke-dashoffset:-1500}}
+    @media(prefers-reduced-motion:reduce){.pulse{animation:none;stroke-dasharray:none;opacity:.3}}
+  </style>
+</defs>
+<g mask="url(#edges)" stroke-linecap="round">
+  <g stroke="#2dd4bf" stroke-width="1"><use href="#a" opacity=".18"/><use href="#b" opacity=".12"/><use href="#c" opacity=".09"/></g>
+  <use href="#a" class="pulse" stroke="#2dd4bf" stroke-width="5" opacity=".45" filter="url(#glow)"/>
+  <use href="#a" class="pulse" stroke="#71f0dc" stroke-width="1.6"/>
+  <use href="#b" class="pulse second" stroke="#2dd4bf" stroke-width="1.2" opacity=".65"/>
+</g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="310" viewBox="0 0 600 310" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">Music Drive</title>
+<desc id="desc">Music search and MP3 downloads. Windows desktop app built with Python, pywebview and JavaScript.</desc>
+<defs>
+  <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(550 25) rotate(140) scale(380 280)" gradientUnits="userSpaceOnUse"><stop stop-color="#2dd4bf" stop-opacity=".09"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></radialGradient>
+  <linearGradient id="edge" x1="32" y1="0" x2="568" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#2dd4bf" stop-opacity=".6"/><stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient>
+  <style>.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}.mono{font-family:ui-monospace,Consolas,'Liberation Mono',monospace}</style>
+</defs>
+<rect x=".5" y=".5" width="599" height="309" rx="18" fill="#0d1117" stroke="#26343e"/>
+<rect x="1" y="1" width="598" height="308" rx="18" fill="url(#glow)"/>
+<path d="M32 1H568" stroke="url(#edge)"/>
+<text x="32" y="45" class="mono" font-size="12" letter-spacing="2" fill="#7f969e">01 / AUDIO TOOLS</text>
+<path d="M550 45L565 30M551 30H565V44" stroke="#2dd4bf" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="30" y="110" class="sans" font-size="40" font-weight="650" letter-spacing="-1.2" fill="#e6edf3">Music Drive<tspan fill="#2dd4bf">.</tspan></text>
+<text x="32" y="155" class="sans" font-size="19" fill="#9baab7">Find your sound. Keep it close.</text>
+<text x="32" y="185" class="sans" font-size="17" fill="#7e8c99">Music search &amp; MP3 downloads for Windows.</text>
+<g stroke="#2dd4bf" stroke-opacity=".23" stroke-width="2" stroke-linecap="round">
+<path d="M458 103V119M470 91V131M482 79V143M494 95V127M506 85V137M518 101V121M530 93V129M542 104V118"/>
+</g>
+<path d="M32 225H568" stroke="#24303a"/>
+<circle cx="36" cy="263" r="3" fill="#2dd4bf"/>
+<text x="50" y="268" class="mono" font-size="14" fill="#a7b5c0">Python</text>
+<text x="123" y="268" class="mono" font-size="14" fill="#45555f">/</text>
+<text x="147" y="268" class="mono" font-size="14" fill="#a7b5c0">pywebview</text>
+<text x="246" y="268" class="mono" font-size="14" fill="#45555f">/</text>
+<text x="270" y="268" class="mono" font-size="14" fill="#a7b5c0">JavaScript</text>
+<text x="568" y="268" text-anchor="end" class="mono" font-size="12" fill="#6f8790">VIEW PROJECT</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="272" viewBox="0 0 1200 272" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">About — useful by design</title>
+  <desc id="desc">I build Python desktop apps, pairing practical tools with thoughtful interfaces. Currently working on music tools and a community VALORANT companion. Focus: Python, Windows desktop apps, clean interfaces.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="1200" y2="272" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111a21"/>
+      <stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="28" x2="0" y2="244" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2dd4bf" stop-opacity="0"/>
+      <stop offset=".45" stop-color="#2dd4bf" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </linearGradient>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace; }
+    </style>
+  </defs>
+  <rect x=".5" y=".5" width="1199" height="271" rx="18" fill="url(#surface)" stroke="#26343e"/>
+  <path d="M1 28V244" stroke="url(#accent)" stroke-width="2"/>
+  <text x="36" y="44" class="mono" font-size="14" letter-spacing="2.2" fill="#82969f">ABOUT / THE APPROACH</text>
+  <text x="33" y="108" class="sans" font-size="47" font-weight="650" letter-spacing="-1.5" fill="#e6edf3">Useful by design<tspan fill="#2dd4bf">.</tspan></text>
+  <text x="36" y="153" class="sans" font-size="22" fill="#b0bdc8">I build desktop apps that turn everyday tasks</text>
+  <text x="36" y="184" class="sans" font-size="22" fill="#b0bdc8">into simple, considered experiences.</text>
+  <circle cx="40" cy="229" r="3.5" fill="#2dd4bf"/>
+  <text x="54" y="235" class="mono" font-size="15" fill="#82969f">EXPLORING / music tools + game companions</text>
+  <path d="M754 38V234" stroke="#26343e"/>
+  <g class="mono" font-size="13" letter-spacing="1.3" fill="#6f8992">
+    <text x="790" y="61">01 / CORE</text>
+    <text x="790" y="127">02 / PLATFORM</text>
+    <text x="790" y="193">03 / FOCUS</text>
+  </g>
+  <g class="sans" font-size="23" fill="#d1dce4">
+    <text x="790" y="89">Python</text>
+    <text x="790" y="155">Windows desktop</text>
+    <text x="790" y="221">Clean interfaces</text>
+  </g>
+  <path d="M1132 46L1140 54L1156 38" stroke="#2dd4bf" stroke-opacity=".7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
